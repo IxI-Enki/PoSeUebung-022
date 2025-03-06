@@ -1,9 +1,9 @@
 ﻿///   N A M E S P A C E   ///
 namespace EventManager.Logic.Entities;
 
-[Table( "Atendees" )]
+[Table( "Attendees" )]
 [Index( nameof( Email ) , IsUnique = true )]
-public class Atendee : EntityObject, IAtendee
+public class Attendee : EntityObject, IAtendee
 {
       [Required]
       [MaxLength( 64 )]

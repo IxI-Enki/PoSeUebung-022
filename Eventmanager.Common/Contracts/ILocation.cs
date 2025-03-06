@@ -6,11 +6,11 @@ public interface ILocation : IIdentifiable
      string Name { get; set; }
       string Address { get; set; }
 
-      void CopyProperties(ILocation location )
+      void CopyProperties(ILocation l )
       {
-            ArgumentNullException.ThrowIfNullOrEmpty( nameof( location ) );
+            ArgumentNullException.ThrowIfNullOrEmpty( nameof( l ) );
 
-            Name = location.Name;
-            Address = location.Address;
+            Name = l.Name;
+            Address = l.Address;
       }
 }

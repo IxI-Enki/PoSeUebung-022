@@ -1,34 +1,38 @@
 ﻿///   N A M E S P A C E   /// 
 namespace EventManager.Common.Modules.Configuration;
 
-internal class AppSettings : ISettings
+public class AppSettings( ) : ISettings
 {
-      #region FIELDS
-      private static AppSettings _instance = new( );
-      private static IConfigurationRoot _configurationRoot;
+      #region __F I E L D S__
+      private static readonly AppSettings _instance = new( );
+      private static readonly IConfigurationRoot _configurationRoot;
       #endregion
 
-      #region PROPERTY
+      #region __P R O P E R T Y__
       public static AppSettings Instance => _instance;
       #endregion
 
-      #region CONSTRUCTORS
-      private AppSettings( ) { }
+      #region __C O N S T R U C T O R S__
       static AppSettings( )
       {
-            var environmentName = Environment.GetEnvironmentVariable( "ASPCORE_ENVIRONMENT" );
+            var environmentName
+                  = Environment.GetEnvironmentVariable( "ASPCORE_ENVIRONMENT" );
 
             var builder
                   = new ConfigurationBuilder( )
-                        .AddJsonFile( "appsetting.json" , optional: false , reloadOnChange: true )
-                        .AddJsonFile( $"appsetting.{environmentName ?? "Development"}.json" , optional: true )
+                        .AddJsonFile( "appsettings.json" ,
+                                      optional: false ,
+                                      reloadOnChange: true )
+                        .AddJsonFile( $"appsettings.{environmentName ?? "Development"}.json" ,
+                                      optional: true )
                         .AddEnvironmentVariables( );
 
-            _configurationRoot = builder.Build( );
+            _configurationRoot
+                  = builder.Build( );
       }
       #endregion
 
-      #region METHOD
+      #region __M E T H O D__
       public string? this[ string key ] => _configurationRoot[ key ];
       #endregion
 }

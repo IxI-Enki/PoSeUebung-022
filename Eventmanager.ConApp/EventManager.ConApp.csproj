@@ -8,28 +8,33 @@
             <Nullable>enable</Nullable>
       </PropertyGroup>
 
+      <!-- PROJECT -->
       <ItemGroup>
             <ProjectReference Include="..\Eventmanager.Logic\EventManager.Logic.csproj" />
       </ItemGroup>
 
       <ItemGroup>
+            <!-- ENTITY FRAMEWORK -->
             <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.13">
-                  <PrivateAssets>all</PrivateAssets>
                   <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+                  <PrivateAssets>all</PrivateAssets>
             </PackageReference>
+            <!-- LINQ -->
             <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0" />
       </ItemGroup>
 
+      <!-- DATA -->
       <ItemGroup>
+            <!-- Settings -->
             <Content Include="appsettings.Development.json">
-                  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-                  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
                   <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+                  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+                  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             </Content>
             <Content Include="appsettings.json">
-                  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-                  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
                   <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+                  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+                  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             </Content>
       </ItemGroup>
 

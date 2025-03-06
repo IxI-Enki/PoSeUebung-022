@@ -8,14 +8,14 @@ public interface IAtendee : IIdentifiable
       string Email { get; set; }
       int EventId { get; set; }
 
-      void CopyProperties( IAtendee atendee )
+      void CopyProperties( IAtendee a )
       {
-            ArgumentNullException.ThrowIfNullOrEmpty( nameof( atendee ) );
+            ArgumentNullException.ThrowIfNullOrEmpty( nameof( a ) );
 
-            FirstName = atendee.FirstName;
-            LastName = atendee.LastName;
-            Email = atendee.Email;
+            FirstName = a.FirstName;
+            LastName = a.LastName;
+            Email = a.Email;
 
-            EventId = atendee.EventId;
+            EventId = a.EventId;
       }
 }

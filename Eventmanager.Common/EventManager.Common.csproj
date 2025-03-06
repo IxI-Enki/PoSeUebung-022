@@ -7,7 +7,7 @@
             <Nullable>enable</Nullable>
       </PropertyGroup>
 
-      <!-- APPSETTINGS -->
+      <!-- DATA -->
       <ItemGroup>
             <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
             <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />

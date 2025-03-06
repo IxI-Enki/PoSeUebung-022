@@ -4,15 +4,9 @@
             <TargetFramework>net9.0</TargetFramework>
             <ImplicitUsings>enable</ImplicitUsings>
             <LangVersion>latest</LangVersion>
+            <OutputType>Exe</OutputType>
             <Nullable>enable</Nullable>
       </PropertyGroup>
-
-      <!-- ENTITY FRAMEWORK -->
-      <ItemGroup>
-            <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.13" />
-            <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.13" />
-            <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.13" />
-      </ItemGroup>
 
       <!-- PROJECT -->
       <ItemGroup>
@@ -21,15 +15,17 @@
 
       <!-- DATA -->
       <ItemGroup>
-            <None Update="Data\attendees.csv">
+            <!-- Settings -->
+            <Content Include="appsettings.Development.json">
+                  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
                   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            </None>
-            <None Update="Data\events.csv">
+                  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            </Content>
+            <Content Include="appsettings.json">
+                  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
                   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            </None>
-            <None Update="Data\locations.csv">
-                  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            </None>
+                  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            </Content>
       </ItemGroup>
 
 </Project>

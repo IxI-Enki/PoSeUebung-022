@@ -12,8 +12,8 @@ global using Microsoft.EntityFrameworkCore;
 global using System.ComponentModel.DataAnnotations;
 global using System.ComponentModel.DataAnnotations.Schema;
 
-
-
+global using EventManager.Logic.Contracts;
+global using EventManager.Logic.Entities;
 
 ///   N A M E S P A C E   ///
 namespace Eventmanager.Logic;
