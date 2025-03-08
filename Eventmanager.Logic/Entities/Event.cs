@@ -18,6 +18,6 @@ public class Event : EntityObject, IEvent
       [Required]
       public int LocationId { get; set; }
 
-      public override string ToString( ) => $"Event      : {Title},\nDescription: {Description},\nDate       :{Date}";
+      public override string ToString( ) => $"Event      : {Title},\nDescription: {Description},\nDate       : {Date}";
 
 }

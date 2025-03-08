@@ -13,13 +13,15 @@ public class EventContext : DbContext, IContext
       public DbSet<Event> EventSet { get; set; }
       public DbSet<Location> LocationSet { get; set; }
       public DbSet<Attendee> AttendeeSet { get; set; }
+
+
       #endregion
 
       #region __C O N S T R U C T O R__
       public EventContext( )
       {
             var appSettings = Common.Modules.Configuration.AppSettings.Instance;
-            
+
             _databaseType = appSettings[ "Database:Type" ] ?? _databaseType;
             _connectionString = appSettings[ $"ConnectionStrings:{_databaseType}ConnectionString" ] ?? _connectionString;
       }
@@ -28,11 +30,18 @@ public class EventContext : DbContext, IContext
       #region __O V E R R I D E S__
       protected override void OnConfiguring( DbContextOptionsBuilder builder )
       {
-            if(_databaseType == "Sqlite") builder.UseSqlite( _connectionString );
+            if(_databaseType == "Sqlite") 
+                  builder.UseSqlite( _connectionString );
 
-            else if(_databaseType == "SqlServer") builder.UseSqlServer( _connectionString );
+            else if(_databaseType == "SqlServer") 
+                  builder.UseSqlServer( _connectionString );
 
             base.OnConfiguring( builder );
+      }
+
+      protected override void OnModelCreating( ModelBuilder builder )
+      {
+            base.OnModelCreating( builder );
       }
       #endregion
 }

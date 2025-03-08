@@ -100,7 +100,11 @@ internal class Program
       #endregion
 
       #region __E V E N T S__
-      static void PrintEvents( IContext c ) { }
+      static void PrintEvents( IContext c )
+      {
+            Console.WriteLine( "Events" );
+            foreach(var e in c.EventSet) Console.WriteLine( e );
+      }
       static void QueryEvents( IContext c ) { }
       static void AddEvent( IContext c ) { }
       static void DeleteEvent( IContext c ) { }

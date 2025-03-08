@@ -23,6 +23,14 @@ public static class Factory
             var events = DataLoader.LoadEventsFromCsv( Path.Combine( path , "Data" , "events.csv" ) );
             events.ToList( ).ForEach( e => context.EventSet.Add( e ) );
             context.SaveChanges( );
+
+            var locations = DataLoader.LoadLocationsFromCsv( Path.Combine( path , "Data" , "locations.csv" ) );
+            locations.ToList( ).ForEach( l => context.LocationSet.Add( l ) );
+            context.SaveChanges( );
+
+            var attendees = DataLoader.LoadAttendeesFromCsv( Path.Combine( path , "Data" , "attendees.csv" ) );
+            attendees.ToList( ).ForEach( a => context.AttendeeSet.Add( a ) );
+            context.SaveChanges( );
       }
 #endif
 }
