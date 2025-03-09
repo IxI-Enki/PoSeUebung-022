@@ -2,6 +2,9 @@
 global using AppSettings = EventManager.Common.Modules.Configuration.AppSettings;
 global using IContext = EventManager.Logic.Contracts.IContext;
 global using Factory = EventManager.Logic.DataContext.Factory;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
+
 
 ///   N A M E S P A C E   ///
 namespace Eventmanager.ConApp;
@@ -89,6 +92,7 @@ internal class Program
                   case 4:
                         DeleteEvent( context );
                         break;
+
                   default:
                         break;
             }
@@ -102,11 +106,52 @@ internal class Program
       #region __E V E N T S__
       static void PrintEvents( IContext c )
       {
-            Console.WriteLine( "Events" );
-            foreach(var e in c.EventSet) Console.WriteLine( e );
+            Console.Write( $"\nAll Events\n" );
+
+            foreach(var e in c.EventSet
+                             .QuerySet.AsNoTracking( ))
+
+                  Console.Write( $"\n{e}\n" );
       }
-      static void QueryEvents( IContext c ) { }
+      static void QueryEvents( IContext c )
+      {
+            Console.Write( $"\nQuery Events\nquery: " );
+
+            var query = Console.ReadLine( )!;
+
+            try
+            {
+                  foreach(var eve in c.EventSet
+                                     .QuerySet.AsNoTracking( )
+                                              .Where( query ))
+
+                        Console.Write( $"\n{eve}\n" );
+            }
+            catch(Exception ex) { Console.Write( $"\n{ex.Message}\n" ); }
+      }
       static void AddEvent( IContext c ) { }
-      static void DeleteEvent( IContext c ) { }
+      static void DeleteEvent( IContext c )
+      {
+            Console.Write( $"\nDelete Events\nTitle: " );
+
+            var title = Console.ReadLine( )!;
+            var entity = c.EventSet
+                          .QuerySet.AsNoTracking( )
+                                   .FirstOrDefault( e => e.Title == title );
+
+            if(entity != null)
+            {
+                  try
+                  {
+                        c.EventSet.Remove( entity.Id );
+                        c.SaveChanges( );
+                  }
+                  catch(Exception ex)
+                  {
+                        Console.Write( $"\n{ex.Message}\nContinue with Enter..." );
+                        Console.ReadLine( );
+                  }
+            }
+      }
       #endregion
 }
