@@ -15,6 +15,7 @@ global using System.ComponentModel.DataAnnotations.Schema;
 
 global using EventManager.Logic.Contracts;
 global using EventManager.Logic.Entities;
+global using EventManager.Logic.DataContext;
 
 ///   N A M E S P A C E   ///
 namespace Eventmanager.Logic;

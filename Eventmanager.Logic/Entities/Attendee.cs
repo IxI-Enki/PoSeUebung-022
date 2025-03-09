@@ -3,7 +3,7 @@ namespace EventManager.Logic.Entities;
 
 [Table( "Attendees" )]
 [Index( nameof( Email ) , IsUnique = true )]
-public class Attendee : EntityObject, IAtendee
+public class Attendee : EntityObject, IAttendee
 {
       [Required]
       [MaxLength( 64 )]
