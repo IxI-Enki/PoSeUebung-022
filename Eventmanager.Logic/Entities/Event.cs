@@ -1,4 +1,6 @@
-﻿///   N A M E S P A C E   ///
+﻿using EventManager.Logic.Extensions;
+
+///   N A M E S P A C E   ///
 namespace EventManager.Logic.Entities;
 
 [Table( "Events" )]
@@ -18,9 +20,12 @@ public class Event : EntityObject, IEvent
       [Required]
       public int LocationId { get; set; }
 
-      public override string ToString( ) =>
+      public override string ToString( ) => string.Concat(
 #if DEBUG
-            $"Id: {this.Id}\n" +
+            $"Event-Id    : {this.Id}\n".ForegroundColor( "240,120,40" ) ,
+            $"Location-Id : {LocationId}\n".ForegroundColor( "240,120,40" ) ,
 #endif 
-            $"Event      : {Title},\nDescription: {Description},\nDate       : {Date}";
+            $"Event-Title : {Title}\n" ,
+            $"Description : {Description}\n",
+            $"Date        : {Date}\n" );
 }

@@ -1,4 +1,6 @@
-﻿///   N A M E S P A C E   ///
+﻿using EventManager.Logic.Extensions;
+
+///   N A M E S P A C E   ///
 namespace EventManager.Logic.Entities;
 
 [Table( "Attendees" )]
@@ -20,9 +22,11 @@ public class Attendee : EntityObject, IAttendee
       [Required]
       public int EventId { get; set; }
 
-      public override string ToString( ) =>
+      public override string ToString( ) => string.Concat(
 #if DEBUG
-            $"Id:{this.Id}" +
+            $"Event-Id    : {EventId}\n".ForegroundColor( "240,120,40" ) ,
+            $"Attendee-Id : {this.Id}\n".ForegroundColor( "240,120,40" ) ,
 #endif
-            $"Attendee: {FirstName} {LastName}";
+            $"Name  : {FirstName} {LastName}\n" ,
+            $"Email : {Email}\n" );
 }

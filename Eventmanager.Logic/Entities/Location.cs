@@ -1,4 +1,6 @@
-﻿///   N A M E S P A C E   ///
+﻿using EventManager.Logic.Extensions;
+
+///   N A M E S P A C E   ///
 namespace EventManager.Logic.Entities;
 
 [Table( "Locations" )]
@@ -13,9 +15,10 @@ public class Location : EntityObject, ILocation
       [MaxLength( 512 )]
       public string Address { get; set; } = string.Empty;
 
-      public override string ToString( ) =>
+      public override string ToString( ) => string.Concat(
 #if DEBUG
-            $"Id: {this.Id}\n" +
+            $"Location-Id : {this.Id}\n".ForegroundColor( "240,120,40" ) ,
 #endif
-            $"Name   : {Name}\nAddress: {Address}";
+            $"Name    : {Name}\n" ,
+            $"Address : {Address}" );
 }
