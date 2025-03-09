@@ -1,7 +1,8 @@
-# PoSeUebung-022
-## Event Manager
+###### <p align="center"> PoSeUebung-022 </p>
 
 <div align="center">
+
+# Event Manager
 
   | Debug-Mode-Output | Release-Mode-Output |
   |--|--|
