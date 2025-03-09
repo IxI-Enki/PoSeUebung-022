@@ -6,7 +6,7 @@ public static class StringExtensions
       #region public METHODS
       public static string ColorBy( this string source , string foregroundColorInstruction , string backgroundColorInstruction )
             => source.ForegroundColor( foregroundColorInstruction ).BackgroundColor( backgroundColorInstruction );
-
+      
       public static string ForegroundColor( this string source , string colorInstruction ) => source.Color( colorInstruction );
       public static string BackgroundColor( this string source , string colorInstruction ) => source.Color( colorInstruction , foreground: false );
 

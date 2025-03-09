@@ -44,7 +44,6 @@ public class EventContext : DbContext, IContext
 
             base.OnConfiguring( builder );
       }
-
       protected override void OnModelCreating( ModelBuilder builder )
       {
             base.OnModelCreating( builder );
