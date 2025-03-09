@@ -63,6 +63,11 @@ internal class Program
             Console.Write( $"\n{nameof( AddEvent ),-20}....{idx++}" );
             Console.Write( $"\n{nameof( DeleteEvent ),-20}....{idx++}" );
 
+            Console.Write( $"\n{nameof( PrintLocations ),-20}....{idx++}" );
+            Console.Write( $"\n{nameof( QueryLocations ),-20}....{idx++}" );
+            Console.Write( $"\n{nameof( AddLocation ),-20}....{idx++}" );
+            Console.Write( $"\n{nameof( DeleteLocation ),-20}....{idx++}" );
+
             Console.Write( string.Concat( "\n\nExit" , new string( '.' , 20 ) , "x\n" ) );
             return idx;
       }
@@ -76,6 +81,7 @@ internal class Program
                         Console.Write( "\nContinue with Enter..." );
                         Console.ReadLine( );
                         break;
+
                   case 1:
                         PrintEvents( context );
                         Console.Write( "\nContinue with Enter..." );
@@ -93,9 +99,104 @@ internal class Program
                         DeleteEvent( context );
                         break;
 
+
+                  case 5:
+                        PrintLocations( context );
+                        Console.Write( "\nContinue with Enter..." );
+                        Console.ReadLine( );
+                        break;
+                  case 6:
+                        QueryLocations( context );
+                        Console.Write( "\nContinue with Enter..." );
+                        Console.ReadLine( );
+                        break;
+                  case 7:
+                        AddLocation( context );
+                        break;
+                  case 8:
+                        DeleteLocation( context );
+                        break;
+
+                  case 9:
+
+                        break;
+                  case 10:
+
+                        break;
+                  case 11:
+
+                        break;
+                  case 12:
+
+                        break;
+
+                  case 13:
+                        break;
+                  case 14:
+                        break;
+                  case 15:
+                        break;
+                  case 16:
+                        break;
                   default:
                         break;
             }
+      }
+
+      private static void DeleteLocation( IContext c )
+      {
+            Console.Write( "\nDelete Location\nName: " );
+
+            var name = Console.ReadLine( )!;
+            var entity = c.LocationSet
+                          .QuerySet.AsNoTracking( )
+                                   .FirstOrDefault( l => l.Name == name );
+
+            if(entity != null)
+            {
+                  try
+                  {
+                        c.EventSet.Remove( entity.Id );
+                        c.SaveChanges( );
+                  }
+                  catch(Exception ex)
+                  {
+                        Console.Write( $"\n{ex.Message}\nContinue with Enter..." );
+                        Console.ReadLine( );
+                  }
+            }
+      }
+
+      private static void AddLocation( IContext c )
+      {
+            
+      }
+
+      private static void QueryLocations( IContext c )
+      {
+            Console.Write( "\nQuery Locations\nquery: " );
+
+            var query = Console.ReadLine( )!;
+
+            try
+            {
+                  foreach(var l in c.LocationSet
+                                   .QuerySet.AsNoTracking( )
+                                            .Where( query ))
+
+                        Console.Write( $"\n{l}\n" );
+            }
+            catch(Exception ex) { Console.Write( $"\n{ex.Message}\n" ); }
+      }
+
+      private static void PrintLocations( IContext c )
+      {
+            Console.Write( "\nAll Locations\n" );
+
+            foreach(var l in c.LocationSet
+                             .QuerySet.AsNoTracking( ))
+
+                  Console.Write( $"\n{l}\n" );
       }
 
 #if DEBUG
@@ -106,7 +207,7 @@ internal class Program
       #region __E V E N T S__
       static void PrintEvents( IContext c )
       {
-            Console.Write( $"\nAll Events\n" );
+            Console.Write( "\nAll Events\n" );
 
             foreach(var e in c.EventSet
                              .QuerySet.AsNoTracking( ))
@@ -115,7 +216,7 @@ internal class Program
       }
       static void QueryEvents( IContext c )
       {
-            Console.Write( $"\nQuery Events\nquery: " );
+            Console.Write( "\nQuery Events\nquery: " );
 
             var query = Console.ReadLine( )!;
 
@@ -129,10 +230,23 @@ internal class Program
             }
             catch(Exception ex) { Console.Write( $"\n{ex.Message}\n" ); }
       }
-      static void AddEvent( IContext c ) { }
+      static void AddEvent( IContext c )
+      {
+            Console.Write( "\nAdd Event\nTitle:\n  " );
+            var eve = new EventManager.Logic.Entities.Event( );
+            eve.Title = Console.ReadLine( )!;
+            Console.Write( "\nDescription:\n  " );
+            eve.Description = Console.ReadLine( )!;
+            Console.WriteLine( "\nDate:\n  " );
+            eve.Date = DateTime.Parse( Console.ReadLine( )! );
+
+            Console.WriteLine( "\nLocationId:\n  " );
+            eve.LocationId = int.Parse( Console.ReadLine( )! );
+
+      }
       static void DeleteEvent( IContext c )
       {
-            Console.Write( $"\nDelete Events\nTitle: " );
+            Console.Write( "\nDelete Events\nTitle: " );
 
             var title = Console.ReadLine( )!;
             var entity = c.EventSet

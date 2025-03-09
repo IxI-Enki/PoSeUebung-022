@@ -20,5 +20,9 @@ public class Attendee : EntityObject, IAttendee
       [Required]
       public int EventId { get; set; }
 
-      public override string ToString( ) => $"Attendee: {FirstName} {LastName}";
+      public override string ToString( ) =>
+#if DEBUG
+            $"Id:{this.Id}" +
+#endif
+            $"Attendee: {FirstName} {LastName}";
 }

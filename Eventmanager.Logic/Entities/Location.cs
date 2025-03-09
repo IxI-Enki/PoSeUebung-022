@@ -13,5 +13,9 @@ public class Location : EntityObject, ILocation
       [MaxLength( 512 )]
       public string Address { get; set; } = string.Empty;
 
-      public override string ToString( ) => $"Name   : {Name}\nAddress: {Address}";
+      public override string ToString( ) =>
+#if DEBUG
+            $"Id: {this.Id}\n" +
+#endif
+            $"Name   : {Name}\nAddress: {Address}";
 }
