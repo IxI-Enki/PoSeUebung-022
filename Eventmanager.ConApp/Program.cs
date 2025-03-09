@@ -5,8 +5,6 @@ global using Factory = EventManager.Logic.DataContext.Factory;
 global using Microsoft.EntityFrameworkCore;
 global using System.Linq.Dynamic.Core;
 global using EventManager.Logic.Extensions;
-using System.Linq;
-
 
 ///   N A M E S P A C E   ///
 namespace Eventmanager.ConApp;
