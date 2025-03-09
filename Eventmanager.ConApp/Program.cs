@@ -50,9 +50,9 @@ internal class Program
 
       private static void PrintHeader( )
             => Console.Write( string.Concat( new string( ' ' , 6 ) ,
-                                            "Event Manager".ForegroundColor( "40,122,77" ) ,
+                                            "Event Manager".ForegroundColor( "40,122,77" )
 #if DEBUG
-                                            " - ".ForegroundColor( "240,120,40" ) ,
+                                            , " - ".ForegroundColor( "240,120,40" ) ,
                                             "debug".BackgroundColor( "240,120,40" ).ForegroundColor( "black" )
 #endif
                                             ) );
@@ -105,9 +105,12 @@ internal class Program
             {
                   // Initiate
                   case 0:
+#if DEBUG
+
                         InitDatabase( );
                         Console.Write( "\nContinue with Enter..." );
                         Console.ReadLine( );
+#endif
                         break;
                   // Events
                   case 1:
@@ -162,9 +165,12 @@ internal class Program
                         break;
 
                   case 13:
+#if DEBUG
+
                         OverrideDatabase( context );
                         Console.Write( "\nContinue with Enter..." );
                         Console.ReadLine( );
+#endif
                         break;
                   case 14:
                         break;
@@ -181,7 +187,7 @@ internal class Program
       static void InitDatabase( ) => Factory.InitDatabase( );
       private static void OverrideDatabase( IContext c ) => Console.Write( "\nCsv-Database Overridden - doesnt't work right now!\n" );
 #endif
-      #endregion
+#endregion
 
       #region __E V E N T S__
       private static void PrintEvents( IContext c )
