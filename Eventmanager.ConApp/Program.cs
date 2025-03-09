@@ -179,11 +179,7 @@ internal class Program
 
 #if DEBUG
       static void InitDatabase( ) => Factory.InitDatabase( );
-
-      private static void OverrideDatabase( IContext c )
-      {
-            Console.WriteLine( "Csv-Database Overridden" );
-      }
+      private static void OverrideDatabase( IContext c ) => Console.Write( "\nCsv-Database Overridden - doesnt't work right now!\n" );
 #endif
       #endregion
 
