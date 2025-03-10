@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 /Eventmanager.Logic/Connections/credentials.csv
 /Eventmanager.Logic/Connections/mssql.txt
+/RITT-EventManager-Ausbaustufe-4A-Generics-WebAPI-Controller.zip
