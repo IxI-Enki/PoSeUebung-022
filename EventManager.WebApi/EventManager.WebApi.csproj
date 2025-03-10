@@ -1,9 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+      <PropertyGroup>
+            <TargetFramework>net9.0</TargetFramework>
+            <ImplicitUsings>enable</ImplicitUsings>
+            <LangVersion>latest</LangVersion>
+            <Nullable>enable</Nullable>
+      </PropertyGroup>
+
+      <!-- PROJECT -->
+      <ItemGroup>
+            <ProjectReference Include="..\Eventmanager.Logic\EventManager.Logic.csproj" />
+      </ItemGroup>
+
+      <ItemGroup>
+            <!-- JSON -->
+            <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="9.0.2" />
+            <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.2" />
+            <!-- LINQ -->
+            <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.2" />
+      </ItemGroup>
+
+
 
 </Project>

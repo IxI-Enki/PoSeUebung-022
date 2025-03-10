@@ -1,27 +1,29 @@
-namespace EventManager.WebApi
+///   N A M E S P A C E   ///
+namespace EventManager.WebApi;
+
+public class Program
 {
-      public class Program
+      public static void Main( string[] args )
       {
-            public static void Main( string[] args )
-            {
-                  var builder = WebApplication.CreateBuilder( args );
+            var builder = WebApplication.CreateBuilder( args );
 
-                  // Add services to the container.
+            // Add services to the container.
 
-                  builder.Services.AddControllers( );
-
-                  var app = builder.Build( );
-
-                  // Configure the HTTP request pipeline.
-
-                  app.UseHttpsRedirection( );
-
-                  app.UseAuthorization( );
+            builder.Services.AddControllers( )
+                            .AddNewtonsoftJson( );       // Add this to the controllers for PATCH-operation.
 
 
-                  app.MapControllers( );
+            var app = builder.Build( );
 
-                  app.Run( );
-            }
+            // Configure the HTTP request pipeline.
+
+            app.UseHttpsRedirection( );
+
+            app.UseAuthorization( );
+
+
+            app.MapControllers( );
+
+            app.Run( );
       }
 }
