@@ -321,6 +321,7 @@ internal class Program
                   try
                   {
                         c.LocationSet.Add( loc );
+
                         c.SaveChanges( );
                   }
                   catch(Exception ex)
