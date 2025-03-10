@@ -40,7 +40,6 @@ public abstract class GenericController<TModel, TEntity>
       /// </returns>
       protected abstract IContext GetContext( );
 
-
       /// <summary>
       /// Retrieves the appropriate <see cref="DbSet{TEntity}"/> from the given context for the entity type.
       /// </summary>
@@ -52,8 +51,7 @@ public abstract class GenericController<TModel, TEntity>
       /// <returns>
       /// A <see cref="DbSet{TEntity}"/> for the operations.
       /// </returns>
-      protected abstract DbSet<TEntity>? GetDbSet( IContext context );
-
+      protected abstract DbSet<TEntity>  GetDbSet( IContext context );
 
       /// <summary>
       /// Converts an entity to its model representation.

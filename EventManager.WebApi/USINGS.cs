@@ -20,6 +20,8 @@ global using TEvent = EventManager.WebApi.Models.ModelEvent;
 global using TLocation = EventManager.WebApi.Models.ModelLocation;
 global using TAttendee = EventManager.WebApi.Models.ModelAttendee;
 
+global using EventManager.Logic.Entities;
+
 //
 global using ModelObject = EventManager.WebApi.Models.ModelObject;
 
