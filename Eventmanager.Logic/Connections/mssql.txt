@@ -1,1 +1,1 @@
-Data Source=127.0.0.1,1433;Database=EventManagerDB;User Id=sa;Password=PoSe!2425;TrustServerCertificate=true
+
