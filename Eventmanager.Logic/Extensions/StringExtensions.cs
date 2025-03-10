@@ -4,11 +4,19 @@ namespace EventManager.Logic.Extensions;
 public static class StringExtensions
 {
       #region public METHODS
-      public static string ColorBy( this string source , string foregroundColorInstruction , string backgroundColorInstruction )
+      public static string ColorXonY( this string source , string foregroundColorInstruction , string backgroundColorInstruction )
             => source.ForegroundColor( foregroundColorInstruction ).BackgroundColor( backgroundColorInstruction );
-      
+
       public static string ForegroundColor( this string source , string colorInstruction ) => source.Color( colorInstruction );
       public static string BackgroundColor( this string source , string colorInstruction ) => source.Color( colorInstruction , foreground: false );
+
+      public static string Colored( this string source , string instruction )
+      {
+            string res = string.Empty;
+            if(instruction == "debug")
+                  res = source.ForegroundColor( "240,120,40" );
+            return res;
+      }
 
       public static string Color( this string source , string colorInstruction , bool foreground = true )
       {

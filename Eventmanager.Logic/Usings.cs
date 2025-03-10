@@ -9,11 +9,12 @@ global using System.ComponentModel.DataAnnotations.Schema;
 
 global using Microsoft.EntityFrameworkCore;
 
-global using EventManager.Common.Contracts;
-
-global using EventManager.Logic.Contracts;
 global using EventManager.Logic.Entities;
+global using EventManager.Logic.Contracts;
+global using EventManager.Logic.Extensions;
 global using EventManager.Logic.DataContext;
+
+global using EventManager.Common.Contracts;
 
 ///   N A M E S P A C E   ///
 namespace Eventmanager.Logic;

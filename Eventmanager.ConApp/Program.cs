@@ -41,7 +41,7 @@ internal class Program
       private static string GetUserInput( )
       {
             string input;
-            Console.Write( "Your choice: " );
+            Console.Write( "  Your choice          : " );
             input = Console.ReadLine( )!;
             return input;
       }
@@ -50,10 +50,11 @@ internal class Program
             => Console.Write( string.Concat( new string( ' ' , 6 ) ,
                                             "Event Manager".ForegroundColor( "40,122,77" )
 #if DEBUG
-                                            , " - ".ForegroundColor( "240,120,40" ) ,
-                                            "debug".BackgroundColor( "240,120,40" ).ForegroundColor( "black" )
+                                            , " - ".Colored( "debug" )
+                                            , "debug".ColorXonY( "black" , "240,120,40" )
 #endif
                                             ) );
+
       private static int PrintMenu( )
       {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -67,28 +68,28 @@ internal class Program
                   aC = "24,12,4";
             int idx = 1;
 #if DEBUG
-            Console.Write( "\n  " + $"{nameof( InitDatabase ),-20}....0".ColorBy( "black" , debug ) );
+            Console.Write( "\n  " + $"{nameof( InitDatabase ),-20}....0".ColorXonY( "black" , debug ) );
             Console.Write( $"\n {new string( '┄' , Console.WindowWidth - 2 ),-25}".ForegroundColor( "60,30,30" ) );
 #endif
             Console.Write(
                   string.Concat(
-                        "\n  " + $"{nameof( PrintEvents /*    */ ),-20}....{idx++}".ColorBy( white , eC ) ,
-                        "\n  " + $"{nameof( QueryEvents /*    */ ),-20}....{idx++}".ColorBy( white , eC ) ,
-                        "\n  " + $"{nameof( AddEvent /*       */ ),-20}....{idx++}".ColorBy( white , eC ) ,
-                        "\n  " + $"{nameof( DeleteEvent /*    */ ),-20}....{idx++}".ColorBy( white , eC ) ,
+                        "\n  " , $"{nameof( PrintEvents /*   */),-20}....{idx++}".ColorXonY( white , eC ) ,
+                        "\n  " , $"{nameof( QueryEvents /*   */),-20}....{idx++}".ColorXonY( white , eC ) ,
+                        "\n  " , $"{nameof( AddEvent /*      */),-20}....{idx++}".ColorXonY( white , eC ) ,
+                        "\n  " , $"{nameof( DeleteEvent /*   */),-20}....{idx++}".ColorXonY( white , eC ) ,
                           $"\n {new string( '┄' , Console.WindowWidth - 2 ),-25}".ForegroundColor( grey ) ,
-                        "\n  " + $"{nameof( PrintLocations /* */ ),-20}....{idx++}".ColorBy( white , lC ) ,
-                        "\n  " + $"{nameof( QueryLocations /* */ ),-20}....{idx++}".ColorBy( white , lC ) ,
-                        "\n  " + $"{nameof( AddLocation /*    */ ),-20}....{idx++}".ColorBy( white , lC ) ,
-                        "\n  " + $"{nameof( DeleteLocation /* */ ),-20}....{idx++}".ColorBy( white , lC ) ,
+                        "\n  " , $"{nameof( PrintLocations /**/),-20}....{idx++}".ColorXonY( white , lC ) ,
+                        "\n  " , $"{nameof( QueryLocations /**/),-20}....{idx++}".ColorXonY( white , lC ) ,
+                        "\n  " , $"{nameof( AddLocation /*   */),-20}....{idx++}".ColorXonY( white , lC ) ,
+                        "\n  " , $"{nameof( DeleteLocation /**/),-20}....{idx++}".ColorXonY( white , lC ) ,
                           $"\n {new string( '┄' , Console.WindowWidth - 2 ),-25}".ForegroundColor( grey ) ,
-                        "\n  " + $"{nameof( PrintAttendees /* */ ),-20}....{idx++}".ColorBy( white , aC ) ,
-                        "\n  " + $"{nameof( QueryAttendees /*  */ ),-20}...{idx++}".ColorBy( white , aC ) ,
-                        "\n  " + $"{nameof( AddAttendee /*     */ ),-20}...{idx++}".ColorBy( white , aC ) ,
-                        "\n  " + $"{nameof( DeleteAttendee /*  */ ),-20}...{idx++}".ColorBy( white , aC ) ,
+                        "\n  " , $"{nameof( PrintAttendees /**/),-20}....{idx++}".ColorXonY( white , aC ) ,
+                        "\n  " , $"{nameof( QueryAttendees /* */),-20}...{idx++}".ColorXonY( white , aC ) ,
+                        "\n  " , $"{nameof( AddAttendee /*    */),-20}...{idx++}".ColorXonY( white , aC ) ,
+                        "\n  " , $"{nameof( DeleteAttendee /* */),-20}...{idx++}".ColorXonY( white , aC ) ,
                           $"\n {new string( '┄' , Console.WindowWidth - 2 ),-25}".ForegroundColor( grey ) ,
 #if DEBUG
-                        "\n  " + $"{nameof( OverrideDatabase ),-20}...{idx++}".ColorBy( "black" , debug ) ,
+                        "\n  " , $"{nameof( OverrideDatabase ),-20}...{idx++}".ColorXonY( "black" , debug ) ,
                           $"\n {new string( '┄' , Console.WindowWidth - 2 ),-25}".ForegroundColor( "60,30,30" ) ,
 #endif
                         string.Concat( "\n  Exit" , new string( '.' , 20 ) , "x\n" )
@@ -185,7 +186,7 @@ internal class Program
       static void InitDatabase( ) => Factory.InitDatabase( );
       private static void OverrideDatabase( IContext c ) => Console.Write( "\nCsv-Database Overridden - doesnt't work right now!\n" );
 #endif
-#endregion
+      #endregion
 
       #region __E V E N T S__
       private static void PrintEvents( IContext c )
