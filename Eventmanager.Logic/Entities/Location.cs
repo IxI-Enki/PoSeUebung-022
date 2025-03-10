@@ -12,7 +12,7 @@ public class Location : EntityObject, ILocation
       [Required]
       [MaxLength( 512 )]
       public string Address { get; set; } = string.Empty;
-
+      
       public override string ToString( ) => string.Concat(
 #if DEBUG
             $"Location-Id : {this.Id}\n".Colored( "debug" ) ,

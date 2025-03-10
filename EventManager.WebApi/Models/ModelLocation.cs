@@ -14,7 +14,7 @@ namespace EventManager.WebApi.Models;
 /// </remarks>
 public class ModelLocation :
         ModelObject,  // Provides the base class functionality, including the Id property for identification.
-        ILocation        // An interface that defines location-specific properties like Name.
+        ILocation     // An interface that defines location-specific properties like Name.
 {
       #region ___P R O P E R T I E S___ 
       public string Name { get; set; } = string.Empty;

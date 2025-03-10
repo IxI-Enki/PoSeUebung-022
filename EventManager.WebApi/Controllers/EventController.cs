@@ -34,7 +34,7 @@ namespace EventManager.WebApi.Controllers
             /// <returns>
             /// A <see cref="DbSet{Event}"/> for the operations.
             /// </returns>
-            protected override DbSet<Event> GetDbSet( IContext context ) => context.DbSetEvent ;
+            protected override DbSet<Event>? GetDbSet( IContext context ) => context.DbSetEvent ;
 
 
             /// <summary>

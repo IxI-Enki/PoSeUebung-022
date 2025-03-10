@@ -52,7 +52,7 @@ public abstract class GenericController<TModel, TEntity>
       /// <returns>
       /// A <see cref="DbSet{TEntity}"/> for the operations.
       /// </returns>
-      protected abstract DbSet<TEntity> GetDbSet( IContext context );
+      protected abstract DbSet<TEntity>? GetDbSet( IContext context );
 
 
       /// <summary>

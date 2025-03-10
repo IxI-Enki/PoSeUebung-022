@@ -33,7 +33,7 @@ namespace EventManager.WebApi.Controllers
             /// <returns>
             /// A <see cref="DbSet{Attendee}"/> for the operations.
             /// </returns>
-            protected override DbSet<Attendee> GetDbSet( IContext context ) => context.DbSetAttendee;
+            protected override DbSet<Attendee>? GetDbSet( IContext context ) => context.DbSetAttendee;
 
             /// <summary>
             /// Converts an attendee to its model representation.

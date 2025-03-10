@@ -12,7 +12,7 @@ namespace EventManager.WebApi.Controllers
       {
             protected override IContext GetContext( ) => Factory.CreateContext( );
 
-            protected override DbSet<Location> GetDbSet( IContext context ) => context.DbSetLocation;
+            protected override DbSet<Location>? GetDbSet( IContext context ) => context.DbSetLocation;
 
             #region ___O V E R R I D E S___ 
 

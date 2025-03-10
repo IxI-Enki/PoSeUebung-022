@@ -14,7 +14,7 @@ namespace EventManager.WebApi.Models;
 /// </remarks>
 public class ModelAttendee :
         ModelObject,  // Provides the base class functionality, including the Id property for identification.
-        IAttendee        // An interface that defines attendee-specific properties like Name.
+        IAttendee     // An interface that defines attendee-specific properties like Name.
 {
       #region ___P R O P E R T I E S___ 
       public string FirstName { get; set; } = string.Empty;
