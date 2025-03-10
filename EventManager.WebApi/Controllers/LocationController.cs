@@ -44,10 +44,8 @@ public class LocationController : GenericController<TLocation , Location>
       {
             // Create a new instance of the model
             var result = new TLocation( );
-
             // Copy properties from the genre entity to the model
             result.CopyProperties( location );
-
             return result;
       }
 

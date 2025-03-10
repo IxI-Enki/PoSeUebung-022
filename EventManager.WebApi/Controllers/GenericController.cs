@@ -30,7 +30,6 @@ public abstract class GenericController<TModel, TEntity>
 {
 
       #region A B S T R A C T S
-
       /// <summary>
       /// Provides the database context for operations.
       /// </summary>
@@ -51,7 +50,7 @@ public abstract class GenericController<TModel, TEntity>
       /// <returns>
       /// A <see cref="DbSet{TEntity}"/> for the operations.
       /// </returns>
-      protected abstract DbSet<TEntity>  GetDbSet( IContext context );
+      protected abstract DbSet<TEntity> GetDbSet( IContext context );
 
       /// <summary>
       /// Converts an entity to its model representation.
@@ -65,12 +64,10 @@ public abstract class GenericController<TModel, TEntity>
       /// A new instance of <typeparamref name="TModel"/> representing the entity.
       /// </returns>
       protected abstract TModel ToModel( TEntity entity );
-
       #endregion
 
 
       #region G E T
-
       /// <summary>
       /// Retrieves all items of the specified entity type.
       /// </summary>
@@ -88,21 +85,17 @@ public abstract class GenericController<TModel, TEntity>
             // Get the DbSet for the entity type
             var dbSet = GetDbSet( context );
 
-            var querySet = dbSet
-                            .AsQueryable( )   // Convert to IQueryable for LINQ operations
-                            .AsNoTracking( ); // Disable change tracking for performance when we don't need to update entities
+            var querySet = dbSet.AsQueryable( )   // Convert to IQueryable for LINQ operations
+                                .AsNoTracking( ); // Disable change tracking for performance when we don't need to update entities
 
-            var query = querySet
-                            .Take( USINGS.MAX_COUNT ) // Limit the number of items returned to prevent overwhelming responses
-                            .ToArray( );                     // Execute the query and convert to array
+            var query = querySet.Take( USINGS.MAX_COUNT ) // Limit the number of items returned to prevent overwhelming responses
+                                .ToArray( );              // Execute the query and convert to array
 
-            var result = query
-                            .Select( e => ToModel( e ) ); // Convert each entity to its model representation
+            var result = query.Select( e => ToModel( e ) ); // Convert each entity to its model representation
 
             // Return the result with an OK status
             return Ok( result );
       }
-
 
       /// <summary>
       /// Queries items based on a provided predicate string.
@@ -128,22 +121,18 @@ public abstract class GenericController<TModel, TEntity>
 
             var dbSet = GetDbSet( context );
 
-            var querySet = dbSet
-                            .AsQueryable( )
-                            .AsNoTracking( );
+            var querySet = dbSet.AsQueryable( )
+                                .AsNoTracking( );
 
             // Use HttpUtility.UrlDecode to decode the predicate from URL encoding
-            var query = querySet
-                            .Where( HttpUtility.UrlDecode( predicate ) )  // Dynamically apply the where clause based on the predicate
-                            .Take( USINGS.MAX_COUNT )
-                            .ToArray( );
+            var query = querySet.Where( HttpUtility.UrlDecode( predicate ) )  // Dynamically apply the where clause based on the predicate
+                                .Take( USINGS.MAX_COUNT )
+                                .ToArray( );
 
-            var result = query
-                            .Select( e => ToModel( e ) );
+            var result = query.Select( e => ToModel( e ) );
 
             return Ok( result );
       }
-
 
       /// <summary>
       /// Retrieves an item by its ID.
@@ -167,19 +156,15 @@ public abstract class GenericController<TModel, TEntity>
             var dbSet = GetDbSet( context );
 
             // Use FirstOrDefault to get the entity or null if not found
-            var result = dbSet
-                            .FirstOrDefault( e => e.Id == id );
+            var result = dbSet.FirstOrDefault( e => e.Id == id );
 
             return result != null
                            ? Ok( ToModel( result ) )         // If found, return the model with OK status
                            : NotFound( $"{id} not found" );  // If not found, return NotFound with a message
       }
-
       #endregion
 
-
       #region P O S T
-
       /// <summary>
       /// Creates a new item.
       /// </summary>
@@ -219,18 +204,11 @@ public abstract class GenericController<TModel, TEntity>
                   // Use CreatedAtAction to return a 201 Created response with the new entity's location
                   return CreatedAtAction( nameof( Get ) , new { id = entity.Id } , ToModel( entity ) );
             }
-            catch(Exception ex)
-            {
-                  // Return any exception message as a BadRequest
-                  return BadRequest( ex.Message );
-            }
+            catch(Exception ex) { return BadRequest( ex.Message ); }
       }
-
       #endregion
 
-
       #region P U T
-
       /// <summary>
       /// Updates an existing item.
       /// </summary>
@@ -259,14 +237,12 @@ public abstract class GenericController<TModel, TEntity>
                   var dbSet = GetDbSet( context );
 
                   // Look for the entity by ID
-                  var entity = dbSet
-                                  .FirstOrDefault( e => e.Id == id );
+                  var entity = dbSet.FirstOrDefault( e => e.Id == id );
 
                   if(entity != null)
                   {
                         // Update entity properties from model
                         entity.CopyProperties( model );
-
                         // Save changes to the database
                         context.SaveChanges( );
                   }
@@ -275,17 +251,11 @@ public abstract class GenericController<TModel, TEntity>
                                  ? NotFound( $"{id} not found" )  // Return NotFound if entity wasn't found
                                  : Ok( ToModel( entity ) );       // Return updated model if update was successful
             }
-            catch(Exception ex)
-            {
-                  return BadRequest( ex.Message );
-            }
+            catch(Exception ex) { return BadRequest( ex.Message ); }
       }
-
       #endregion
 
-
       #region D E L E T E
-
       /// <summary>
       /// Deletes an item by its ID.
       /// </summary>
@@ -311,14 +281,12 @@ public abstract class GenericController<TModel, TEntity>
                   var dbSet = GetDbSet( context );
 
                   // Find the entity to delete
-                  var entity = dbSet
-                                  .FirstOrDefault( e => e.Id == id );
+                  var entity = dbSet.FirstOrDefault( e => e.Id == id );
 
                   if(entity != null)
                   {
                         // Mark the entity for deletion
                         dbSet.Remove( entity );
-
                         // Commit the deletion to the database
                         context.SaveChanges( );
                   }
@@ -326,11 +294,7 @@ public abstract class GenericController<TModel, TEntity>
                                  ? NotFound( $"{id} not found" )  // If not found, return NotFound
                                  : NoContent( );                  // If deleted, return NoContent (204)
             }
-            catch(Exception ex)
-            {
-                  return BadRequest( ex.Message );
-            }
+            catch(Exception ex) { return BadRequest( ex.Message ); }
       }
-
       #endregion
 }

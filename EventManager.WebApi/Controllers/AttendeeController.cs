@@ -44,10 +44,8 @@ public class AttendeeController : GenericController<TAttendee , Attendee>
       {
             // Create a new instance of the model
             var result = new TAttendee( );
-
             // Copy properties from the genre entity to the model
             result.CopyProperties( attendee );
-
             return result;
       }
 

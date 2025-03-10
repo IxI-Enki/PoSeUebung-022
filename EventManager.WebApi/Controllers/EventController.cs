@@ -44,10 +44,8 @@ public class EventController : GenericController<TEvent , Event>
       {
             // Create a new instance of the model
             var result = new TEvent( );
-
             // Copy properties from the genre entity to the model
             result.CopyProperties( @event );
-
             return result;
       }
 
