@@ -17,7 +17,6 @@ public static class StringExtensions
                   res = source.ForegroundColor( "240,120,40" );
             return res;
       }
-
       public static string Color( this string source , string colorInstruction , bool foreground = true )
       {
             var asciiColorString = Decode( colorInstruction , foreground );
