@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EventManager.Logic.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -7,7 +8,7 @@ namespace EventManager.WebApi.Controllers
 {
       [Route( "api/[controller]" )]
       [ApiController]
-      public class EventController : GenericController<TEvent,Event>
+      public class AttendeeController : GenericController<TAttendee,Attendee>
       {
             #region ___O V E R R I D E S___ 
 
@@ -22,7 +23,7 @@ namespace EventManager.WebApi.Controllers
 
 
             /// <summary>
-            /// Retrieves the appropriate <see cref="DbSet{Artist}"/> from the given context for the artist type.
+            /// Retrieves the appropriate <see cref="DbSet{Attendee}"/> from the given context for the attendee type.
             /// </summary>
             ///
             /// <param name="context">
@@ -30,29 +31,28 @@ namespace EventManager.WebApi.Controllers
             /// </param>
             ///
             /// <returns>
-            /// A <see cref="DbSet{Artist}"/> for the operations.
+            /// A <see cref="DbSet{Attendee}"/> for the operations.
             /// </returns>
-            protected override DbSet<Event> GetDbSet( IContext context ) => context.EventSet;
-
+            protected override DbSet<Attendee> GetDbSet( IContext context ) => context.DbSetAttendee;
 
             /// <summary>
-            /// Converts an artist to its model representation.
+            /// Converts an attendee to its model representation.
             /// </summary>
             ///
-            /// <param name="artist">
-            /// The artist to convert.
+            /// <param name="attendee">
+            /// The attendee to convert.
             /// </param>
             ///
             /// <returns>
-            /// A new instance of <typeparamref name="TArtist"/> representing the artist.
+            /// A new instance of <typeparamref name="TAttendee"/> representing the attendee.
             /// </returns>
-            protected override TEvent ToModel( Event artist )
+            protected override TAttendee ToModel( Attendee attendee )
             {
                   // Create a new instance of the model
-                  var result = new TEvent( );
+                  var result = new TAttendee( );
 
                   // Copy properties from the genre entity to the model
-                  result.CopyProperties( artist );
+                  result.CopyProperties( attendee );
 
                   return result;
             }

@@ -49,7 +49,7 @@ public abstract class ModelObject : IIdentifiable
       public virtual void CopyProperties( IIdentifiable other )
       {
             // Check if the provided object is null to prevent null reference exceptions
-            ArgumentNullException.ThrowIfNull( nameof( other ) );
+            ArgumentNullException.ThrowIfNullOrEmpty( nameof( other ) );
 
             // Copy the Id from the other object to this instance
             Id = other.Id;

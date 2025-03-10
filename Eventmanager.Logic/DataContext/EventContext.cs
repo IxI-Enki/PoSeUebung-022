@@ -10,9 +10,9 @@ public class EventContext : DbContext, IContext
       #endregion
 
       #region __P R O P E R T I E S__
-      internal DbSet<Event> DbSetEvent { get; set; }
-      internal DbSet<Location> DbSetLocation { get; set; }
-      internal DbSet<Attendee> DbSetAttendee { get; set; }
+      public DbSet<Event> DbSetEvent { get; set; }
+      public DbSet<Location> DbSetLocation { get; set; }
+      public DbSet<Attendee> DbSetAttendee { get; set; }
 
       public EntitySet<Event> EventSet { get; }
       public EntitySet<Location> LocationSet { get; }

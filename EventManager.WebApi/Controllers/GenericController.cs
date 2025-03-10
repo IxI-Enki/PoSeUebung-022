@@ -1,7 +1,6 @@
 ﻿///   N A M E S P A C E   ///
 namespace EventManager.WebApi.Controllers;
 
-
 [Route( "api/[controller]" )]
 [ApiController]
 /// <summary>

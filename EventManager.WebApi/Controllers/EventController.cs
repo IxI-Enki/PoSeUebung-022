@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EventManager.Logic.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,7 +24,7 @@ namespace EventManager.WebApi.Controllers
 
 
             /// <summary>
-            /// Retrieves the appropriate <see cref="DbSet{Artist}"/> from the given context for the artist type.
+            /// Retrieves the appropriate <see cref="DbSet{Event}"/> from the given context for the event type.
             /// </summary>
             ///
             /// <param name="context">
@@ -30,29 +32,29 @@ namespace EventManager.WebApi.Controllers
             /// </param>
             ///
             /// <returns>
-            /// A <see cref="DbSet{Artist}"/> for the operations.
+            /// A <see cref="DbSet{Event}"/> for the operations.
             /// </returns>
-            protected override DbSet<Event> GetDbSet( IContext context ) => context.EventSet;
+            protected override DbSet<Event> GetDbSet( IContext context ) => context.DbSetEvent ;
 
 
             /// <summary>
-            /// Converts an artist to its model representation.
+            /// Converts an event to its model representation.
             /// </summary>
             ///
-            /// <param name="artist">
-            /// The artist to convert.
+            /// <param name="event">
+            /// The event to convert.
             /// </param>
             ///
             /// <returns>
-            /// A new instance of <typeparamref name="TArtist"/> representing the artist.
+            /// A new instance of <typeparamref name="TEvent"/> representing the event.
             /// </returns>
-            protected override TEvent ToModel( Event artist )
+            protected override TEvent ToModel( Event @event )
             {
                   // Create a new instance of the model
                   var result = new TEvent( );
 
                   // Copy properties from the genre entity to the model
-                  result.CopyProperties( artist );
+                  result.CopyProperties( @event );
 
                   return result;
             }
