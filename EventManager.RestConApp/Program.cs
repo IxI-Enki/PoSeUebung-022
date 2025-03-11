@@ -3,9 +3,10 @@ global using AppSettings = EventManager.Common.Modules.Configuration.AppSettings
 global using IContext = EventManager.Logic.Contracts.IContext;
 global using Factory = EventManager.Logic.DataContext.Factory;
 global using EventManager.Logic.Extensions;
+global using EventManager.Common.Contracts;
 
 ///   N A M E S P A C E   ///
-namespace Eventmanager.ConApp;
+namespace Eventmanager.RESTConApp;
 
 internal class Program
 {
@@ -185,7 +186,13 @@ internal class Program
 
       private static void PrintEvents( )
       {
-            throw new NotImplementedException( );
+            Console.Write( "\nAll Events\n" );
+
+
+            foreach(var e in c.EventSet
+                             .QuerySet.AsNoTracking( ))
+
+                  Console.Write( $"\n{e}\n" );
       }
 
       private static void QueryEvents( )
