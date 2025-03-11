@@ -1,5 +1,5 @@
 ﻿///   N A M E S P A C E   ///
-namespace EventManager.RestConApp.Models;
+namespace EventManager.RESTConApp.Models;
 
 public class Location : EventManager.RESTConApp.Models.ModelObject, Common.Contracts.ILocation
 {

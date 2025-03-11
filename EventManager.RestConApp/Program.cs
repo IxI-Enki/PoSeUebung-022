@@ -4,6 +4,7 @@ global using IContext = EventManager.Logic.Contracts.IContext;
 global using Factory = EventManager.Logic.DataContext.Factory;
 global using EventManager.Logic.Extensions;
 global using EventManager.Common.Contracts;
+using System.Text.Json;
 
 ///   N A M E S P A C E   ///
 namespace Eventmanager.RESTConApp;
@@ -167,7 +168,6 @@ internal class Program
 
                   case 13:
 #if DEBUG
-
                         OverrideDatabase( );
                         Console.Write( "\nContinue with Enter..." );
                         Console.ReadLine( );
@@ -188,13 +188,19 @@ internal class Program
       {
             Console.Write( "\nAll Events\n" );
 
+            var client = new HttpClient { BaseAddress = new Uri( API_BASE_URL ) };
+            var response = client.GetAsync( "Events" ).Result;
 
-            foreach(var e in c.EventSet
-                             .QuerySet.AsNoTracking( ))
+            if(response.IsSuccessStatusCode)
+            {
+                  // Annahme: Die Antwort ist im JSON-Format
+                  var json = response.Content.ReadAsStringAsync( ).Result;
+                  var events = JsonSerializer.Deserialize<EventManager.RESTConApp.Models.Event[]>( json , new JsonSerializerOptions { PropertyNameCaseInsensitive = true } ) ?? [];
 
-                  Console.Write( $"\n{e}\n" );
+                  foreach(var e in events)
+                        Console.Write( $"\n{e}\n" );
+            }
       }
-
       private static void QueryEvents( )
       {
             throw new NotImplementedException( );
