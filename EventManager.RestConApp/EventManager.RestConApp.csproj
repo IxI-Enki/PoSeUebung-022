@@ -10,9 +10,19 @@
 
       <!-- PROJECT -->
       <ItemGroup>
-            <ProjectReference Include="..\Eventmanager.Common\EventManager.Common.csproj" />
+            <ProjectReference Include="..\Eventmanager.Logic\EventManager.Logic.csproj" />
       </ItemGroup>
 
+      <ItemGroup>
+            <!-- ENTITY FRAMEWORK -->
+            <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0-preview.1.25081.1">
+                  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+                  <PrivateAssets>all</PrivateAssets>
+            </PackageReference>
+            <!-- LINQ -->
+            <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.2" />
+      </ItemGroup>
+      
       <!-- DATA -->
       <ItemGroup>
             <!-- Settings -->
