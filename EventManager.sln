@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventManager.RestConApp", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventManager.WebApi", "EventManager.WebApi\EventManager.WebApi.csproj", "{2B3AD5EA-14D2-48D1-811A-A5B4FF82C942}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventManager.AvaloniaApp", "EventManager.AvaloniaApp\EventManager.AvaloniaApp.csproj", "{815A1C71-7E15-4305-A1AC-5447C670B83F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{2B3AD5EA-14D2-48D1-811A-A5B4FF82C942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B3AD5EA-14D2-48D1-811A-A5B4FF82C942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B3AD5EA-14D2-48D1-811A-A5B4FF82C942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815A1C71-7E15-4305-A1AC-5447C670B83F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815A1C71-7E15-4305-A1AC-5447C670B83F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815A1C71-7E15-4305-A1AC-5447C670B83F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815A1C71-7E15-4305-A1AC-5447C670B83F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
