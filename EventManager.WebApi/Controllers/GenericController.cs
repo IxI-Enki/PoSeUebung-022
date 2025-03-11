@@ -88,7 +88,7 @@ public abstract class GenericController<TModel, TEntity>
             var querySet = dbSet.AsQueryable( )   // Convert to IQueryable for LINQ operations
                                 .AsNoTracking( ); // Disable change tracking for performance when we don't need to update entities
 
-            var query = querySet.Take( USINGS.MAX_COUNT ) // Limit the number of items returned to prevent overwhelming responses
+            var query = querySet.Take( Usings.MAX_COUNT ) // Limit the number of items returned to prevent overwhelming responses
                                 .ToArray( );              // Execute the query and convert to array
 
             var result = query.Select( e => ToModel( e ) ); // Convert each entity to its model representation
@@ -126,7 +126,7 @@ public abstract class GenericController<TModel, TEntity>
 
             // Use HttpUtility.UrlDecode to decode the predicate from URL encoding
             var query = querySet.Where( HttpUtility.UrlDecode( predicate ) )  // Dynamically apply the where clause based on the predicate
-                                .Take( USINGS.MAX_COUNT )
+                                .Take( Usings.MAX_COUNT )
                                 .ToArray( );
 
             var result = query.Select( e => ToModel( e ) );
